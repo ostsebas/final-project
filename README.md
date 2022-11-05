@@ -16,9 +16,10 @@ npm run dev
 
 1. Tener Docker instalado junto con docker compose
 2. Ir a la carpeta del proyecto
-3. Renombrar el .env.example y colocar lo datos personales que.
-4. Configurar el docker compose con los datos personales
-5. Ejecutar el comando para levantar el servidor en segundo plano
+3. Quitar extension .example del Dockerfile y del docker-compose.yml (Problemas con raiways al hacer el deploy)
+4. Renombrar el .env.example y colocar lo datos personales que.
+5. Configurar el docker compose con los datos personales
+6. Ejecutar el comando para levantar el servidor en segundo plano
 
 ```sh
     docker compose up --build -d
