@@ -14,7 +14,7 @@ const AuthSchema = new mongoose.Schema(
         },
         about: {
             type:String,
-            default: 'Sin descipcion'
+            default: 'Sin descripción'
         },
         avatar: {
             type: String

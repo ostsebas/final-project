@@ -185,7 +185,7 @@ const editPost = async (req, res = response) => {
   try {
     const { title, body, category } = req.body
 
-    if(!regex.titleValid.test(title)){
+    if(title.length< 3 && title.length >36){
       req.flash('error', 'Titulo no valido')
       return res.redirect('/')
     }
