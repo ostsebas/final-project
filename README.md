@@ -2,8 +2,8 @@
 
 ## Pasos para arrancar el servidor
 
-1. Renombrar el .env.example y colocar lo datos personales.
-2. Instalar dependencias
+1. Renombrar él .env.example y colocar los datos personales.
+2. Instalar dependencias.
 ```sh
 npm install
 ```
@@ -14,12 +14,12 @@ npm run dev
 
 ## Pasos para arrancar el servidor con docker
 
-1. Tener Docker instalado junto con docker compose
-2. Ir a la carpeta del proyecto
-3. Quitar extension .example del Dockerfile y del docker-compose.yml (Problemas con raiways al hacer el deploy)
-4. Renombrar el .env.example y colocar lo datos personales que.
+1. Tener Docker instalado junto con docker compose.
+2. Ir a la carpeta del proyecto.
+3. Quitar extension .example del Dockerfile y del docker-compose.yml (Problemas con raiways al hacer el deploy).
+4. Renombrar él .env.example y colocar los datos personales.
 5. Configurar el docker compose con los datos personales
-6. Ejecutar el comando para levantar el servidor en segundo plano
+6. Ejecutar el comando para levantar el servidor en segundo plano.
 
 ```sh
     docker compose up --build -d
@@ -28,12 +28,12 @@ npm run dev
 
 ## Funciones
 
-- Paginacion
+- Paginación
 - Perfil
 - Comentarios
-- Busqueda de Post
+- Búsqueda de Post
 - Avatar
-- Agregar imagenes al post
+- Agregar imágenes al post
 - Error 404
-
-
+- Avatar
+- Categorías

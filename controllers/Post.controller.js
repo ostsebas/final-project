@@ -2,7 +2,6 @@ const { response } = require('express')
 const Post = require('../models/Post.model')
 const Auth = require('../models/Auth.model')
 const Comment = require('../models/Comment.model')
-const { regex } = require('../helpers/Validation.helper')
 
 //! Mostrar post en el home
 const getPostMain = async (req, res = response) => {
