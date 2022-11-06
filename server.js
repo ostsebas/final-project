@@ -9,8 +9,6 @@ const flash = require('connect-flash')
 require('dotenv').config()
 require('./config/Passport.config')
 const multer = require('multer')
-const path = require('path')
-const uuid = require('uuid')
 
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 const Handlebars = require('handlebars')
@@ -23,6 +21,8 @@ const { dbConnection } = require('./config/DBConnection.config')
 const { routerAuth } = require('./routes/Auth.route')
 const { routerDev } = require('./routes/db')
 const { routerPosts } = require('./routes/Post.route')
+const { routerUser } = require('./routes/User.route')
+const { storage } = require('./config/Multer.config')
 
 // Inicializo la aplicación de express
 
@@ -56,12 +56,7 @@ app.use(passport.session())
 app.use(flash())
 
 //Declaro el nombre y el destino de las imagenes
-const storage = multer.diskStorage({
-    destination: 'uploads',
-    filename: (req, file, cb, filename) =>{
-        cb(null, uuid.v4() + path.extname(file.originalname))
-    }
-})
+
 app.use(multer({
     storage: storage
 }).single('image'))
@@ -82,6 +77,7 @@ app.use((req, res, next) => {
 app.use('/', routerAuth)
 app.use('/', routerDev) // Solo para desarrollo
 app.use('/', routerPosts)
+app.use('/', routerUser)
 
 app.use((req, res) => {
     res.status(404).render('404', {title: '404 - Ruta no encontrada'})

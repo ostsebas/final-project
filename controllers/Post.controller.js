@@ -2,6 +2,7 @@ const { response } = require('express')
 const Post = require('../models/Post.model')
 const Auth = require('../models/Auth.model')
 const Comment = require('../models/Comment.model')
+const { regex } = require('../helpers/Validation.helper')
 
 //! Mostrar post en el home
 const getPostMain = async (req, res = response) => {
@@ -29,10 +30,22 @@ const getPostMain = async (req, res = response) => {
 
 const searchPost = async (req, res = response) => {
   try {
-    console.log(req.query.search)
     const result = await Post.find({title: {$regex: '.*' + req.query.search +'.*', $options:'i'}}).lean()
     res.status(200).render('search',{
-      result
+      result,
+      title: 'Resultados'
+    })
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const categorySearch = async (req, res = response) => {
+  try {
+    const result = await Post.find({category: req.query.category}).lean()
+    res.status(200).render('search', {
+      result,
+      title: 'Resultados'
     })
   } catch (error) {
     console.log(error)
@@ -80,18 +93,24 @@ const showPost = async (req, res = response) => {
 
 //! RENDER DEL NEW PSOT
 const newPost = (req, res = response) => {
-    res.status(200).render('new')
+  try {
+        
+    res.status(200).render('new', {
+      title:'Crear Post'
+    })
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 //!CREAR POST
 const createPost = async (req, res = response) => {
     try {
-        let  {title, body} = req.body
+        let  {title, body, category} = req.body
         let image
-        
-        if(title.length > 36){
-          req.flash('error', 'El titulo es demaciado largo')
-          return res.redirect('/auth/signin')
+        if(title.length< 3 && title.length >36){
+          req.flash('error', 'Titulo no valido')
+          return res.redirect('/')
         }
 
         if(req.file == undefined){
@@ -100,12 +119,13 @@ const createPost = async (req, res = response) => {
           image = '/uploads/' + req.file.filename
         }
 
-        const newPost = new Post({title, body, user: req.user.id, image})
+        const newPost = new Post({title, body, user: req.user.id, image, category})
         await newPost.save()
 
         res.redirect(`/posts/${newPost.slug}`)
 
     } catch (error) {
+      console.log(error)
         req.flash('error', 'Ha ocurrido un error')
         return res.redirect('/')
     }
@@ -114,9 +134,11 @@ const createPost = async (req, res = response) => {
 const createComment = async (req, res = response) => {
   try {
     let { comment } = req.body
+    if(comment.length < 3 && comment.length > 140){
+      req.flash('error', 'Comentario no valido')
+      return res.redirect(`/posts/${req.params.slug}`)
+    }
 
-    console.log(req.params)
-    console.log(req.body)
     const newComment = new Comment({author: req.params.user, comment, postId: req.params.post})
     await newComment.save()
     req.flash('success', 'Comentario agregado')
@@ -161,9 +183,14 @@ const showPostFormEdit = async (req, res = response) => {
 
 const editPost = async (req, res = response) => {
   try {
-    const { title, body } = req.body
+    const { title, body, category } = req.body
 
-    const result = await Post.findByIdAndUpdate(req.params.id, {title, body})
+    if(!regex.titleValid.test(title)){
+      req.flash('error', 'Titulo no valido')
+      return res.redirect('/')
+    }
+
+    await Post.findByIdAndUpdate(req.params.id, {title, body, category})
     req.flash('success', 'Post Editado')
     res.redirect('/posts')
   }catch(error){
@@ -182,5 +209,6 @@ module.exports = {
   getPostMain,
   editPost,
   createComment,
-  searchPost
+  searchPost,
+  categorySearch
 }

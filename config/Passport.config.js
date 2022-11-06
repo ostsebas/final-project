@@ -12,7 +12,7 @@ passport.use(
             const user = await Auth.findOne({ email })
 
             if (!user) {
-                return done(null, false, { message: 'User not found.' })
+                return done(null, false, ({ message: 'User not found.' }))
             }
 
             const isMatch = await user.checkPassword(password)

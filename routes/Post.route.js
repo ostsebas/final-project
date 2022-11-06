@@ -11,7 +11,8 @@ const {
     getPostMain,
     editPost,
     createComment, 
-    searchPost} = require('../controllers/Post.controller')
+    searchPost,
+    categorySearch} = require('../controllers/Post.controller')
 const isAuthenticated = require('../middlewares/isauthenticated')
 
 
@@ -36,6 +37,7 @@ routerPosts.delete('/posts/:id', isAuthenticated, deletePost)
 
 routerPosts.get('/search/', searchPost)
 
+routerPosts.get('/category', categorySearch)
 
 module.exports = {
     routerPosts

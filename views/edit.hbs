@@ -1,27 +1,32 @@
 <div class="row justify-content-center">
   <div class="col-8">
-
-
     <form action="/posts/edit/{{postEdit._id}}?_method=POST" method="POST" class="card border-secondary">
       <div class="card-header">Editar Post</div>
-
       <div class="card-body">
-
         <div class="form-group">
           <label for="title" class="form-label">Título</label>
           <input type="text" class="form-control" id="title" name="title" value="{{postEdit.title}}" />
         </div>
-
+        <div class="form-group">
+          <label for="category" class="form-label mt-4">Categoria</label>
+          <select name="category" id="category">
+            <option name="info" value="info" selected>Informacion</option>
+            <option name="review" value="review">Review</option>
+            <option name="novedad" value="novedad">prueba</option>
+            <option name="noticia" value="noticia">noticia</option>
+            <option name="coding" value="coding">Opinion</option>
+            <option name="opinion" value="opinion">Opinion</option>
+          </select>
+          </select>
+        </div>
         <div class="form-group">
           <label for="body" class="form-label">Contenido</label>
           <textarea class="form-control" id="body" name="body" rows="3">{{postEdit.body}}</textarea>
         </div>
-
-      <button class="btn btn-primary mt-4">
-        Enviar
-      </button>
+        <button class="btn btn-primary mt-4">
+          Enviar
+        </button>
+      </div>
+    </form>
   </div>
-  </form>
-
-</div>
 </div>

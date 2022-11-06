@@ -16,6 +16,9 @@ const postSchema = new mongoose.Schema(
             type: String,
             required: true
         },
+        category:{
+            type: String
+        },
         slug: {
             type: String,
             required: true,
@@ -32,8 +35,6 @@ const postSchema = new mongoose.Schema(
     }
 )
 
-// Middleware .pre()
-// TODO: Llevar este middleware a un archivo separado
 
 postSchema.plugin(mongoosePaginate)
 

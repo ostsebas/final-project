@@ -1,26 +1,33 @@
 <div class="row justify-content-center">
   <div class="col-8">
-
     <form action="/posts" method="POST" class="card" enctype="multipart/form-data">
-<div class="card-header">Crear Post</div>
+      <div class="card-header">Crear Post</div>
       <div class="card-body">
         <div class="form-group">
           <label for="title" class="form-label mt-4">Título</label>
           <input type="text" class="form-control" id="title" name="title" maxlength="35"
             placeholder="Ingrese el título del post" />
         </div>
-
         <div class="form-group">
           <label for="image" class="form-label mt-4">Imagen</label>
           <input type="file" name="image" id="image" class="form-control">
         </div>
-
-        <div id="froala" class="form-group">
+        <div class="form-group">
+          <label for="category" class="form-label mt-4">Categoria</label>
+          <select class="form-control" name="category" id="category">
+            <option name="info" value="info" selected>Informacion</option>
+            <option name="review" value="review">Review</option>
+            <option name="novedad" value="novedad">Novedad</option>
+            <option name="noticia" value="noticias">Noticia</option>
+            <option name="coding" value="coding">Coding</option>
+            <option name="opinion" value="opinion">Opinion</option>
+          </select>
+        </div>
+        <div class="form-group">
           <label for="body" class="form-label mt-4">Cuerpo</label>
           <textarea class="form-control" id="body" name="body" rows="5"
             placeholder="Ingrese el cuerpo del post"></textarea>
         </div>
-
         <button class="btn btn-primary m-4">Enviar</button>
       </div>
     </form>

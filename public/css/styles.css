@@ -5,9 +5,7 @@
   margin: 0;
   padding: 0;
 }
-body {
-  background: rgb(245, 245, 245);
-}
+
 
 a {
   text-decoration: none;
@@ -28,6 +26,6 @@ a .logo_sb {
   object-fit: cover;
 }
 
-.bg-darkblue {
-  background: #082032;
+.dark {
+  background: #212121;
 }

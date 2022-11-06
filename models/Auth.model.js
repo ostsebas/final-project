@@ -12,6 +12,10 @@ const AuthSchema = new mongoose.Schema(
             required: true,
             unique: true
         },
+        about: {
+            type:String,
+            default: 'Sin descipcion'
+        },
         avatar: {
             type: String
         },

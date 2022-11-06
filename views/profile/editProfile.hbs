@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-12">
+        <form action="/profile/edit/{{userProfile._id}}" method="POST" class="card" enctype="multipart/form-data">
+            <div class="card-header">Editar Perfil</div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="username" class="form-label mt-4">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" value="{{userProfile.name}}">
+                </div>
+                <div class="form-group">
+                    <label for="image" class="form-label mt-4">Avatar</label>
+                    <input type="file" class="form-control" id="image" name="image">
+                </div>
+                <div class="form-group">
+                    <label for="aboutme" class="form-label mt-4">Acerca de mi</label>
+                    <textarea name="aboutme" id="aboutme" rows="7" class="form-control">{{userProfile.about}}</textarea>
+                </div>
+                <button class="btn btn-primary mt-4">Editar</button>
+            </div>
+        </form>
+    </div>
+</div>

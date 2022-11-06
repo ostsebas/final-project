@@ -2,17 +2,15 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">Panel</div>
-
             <div class="card-body">
-
                 <div class="list-group">
                     {{#each posts}}
-                    <div class="list-group-item list-group-item-action list-group-item-light d-flex flex-column flex-sm-column flex-md-row align-items-center ">
-                        <div class="me-auto fs-5 text-primary">{{this.title}}</div>
-
+                    <div
+                        class="list-group-item list-group-item-action list-group-item d-flex flex-column flex-sm-column flex-md-row align-items-center ">
+                        <div class="me-auto fs-5 text-white">{{this.title}}</div>
                         <div class="d-flex flex-wrap">
-
-                            <a href="/posts/{{this.slug}}" class="btn btn-secondary m-1" data-bs-toggle="tooltip" data-bs-title="Ver Post">
+                            <a href="/posts/{{this.slug}}" class="btn btn-success m-1" data-bs-toggle="tooltip"
+                                data-bs-title="Ver Post">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-eye" viewBox="0 0 16 16">
                                     <path
@@ -20,10 +18,9 @@
                                     <path
                                         d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
                                 </svg>
-                                </a>
-
-
-                            <a href="/posts/edit/{{this._id}}" class="btn btn-primary m-1" data-bs-toggle="tooltip" data-bs-title="Editar Post">
+                            </a>
+                            <a href="/posts/edit/{{this._id}}" class="btn btn-primary m-1" data-bs-toggle="tooltip"
+                                data-bs-title="Editar Post">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-pencil-square" viewBox="0 0 16 16">
                                     <path
@@ -34,10 +31,9 @@
                                     </path>
                                 </svg>
                             </a>
-
-
                             <form action="/posts/{{this._id}}?_method=DELETE" method="POST">
-                                <button class="btn btn-danger  m-1" data-bs-toggle="tooltip" data-bs-title="Eliminar Post">
+                                <button class="btn btn-danger  m-1" data-bs-toggle="tooltip"
+                                    data-bs-title="Eliminar Post">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                         class="bi bi-trash-fill" viewBox="0 0 16 16">
                                         <path
@@ -46,12 +42,10 @@
                                     </svg>
                                 </button>
                             </form>
-
                         </div>
                     </div>
                     {{/each}}
                 </div>
-
             </div>
         </div>
     </div>
